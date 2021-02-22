@@ -1,5 +1,5 @@
-# MergeSorte
-Algoritimo de Merge Sorte feito em java com utilização da ide IntelliJ.
+# MergeSort
+Algoritimo de Merge Sort feito em java com utilização da ide IntelliJ.
 
 1. DESCRIÇÃO: 
 
