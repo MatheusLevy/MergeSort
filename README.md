@@ -1,3 +1,4 @@
+TESTE
 # MergeSort
 Algoritimo de Merge Sort feito em java com utilização da ide IntelliJ.
 
