@@ -26,6 +26,13 @@ public class Dado1 implements Comparable{
     }
 
 
+
+    /* Retorno:
+        -1 : A<B
+         0 : A==B
+         1 : A>B
+    */
+
     @Override
     public int compareTo(Object B) {
         //Para compararmos os valor em String vamos usar o valor como sendo a ordem alfabetica
@@ -35,13 +42,23 @@ public class Dado1 implements Comparable{
         int tamanhoString1 = this.getChave().length();
         int tamanhoString2 = dado.getChave().length();
 
-
-        int i=0;
-        while(i<tamanhoString1 && i<tamanhoString2){
-            if((int) this.getChave().charAt(i) < (int)((Dado1) B).getChave().charAt(i)){
-                return -1;    //Retorna -1 se achou um caractere de A que menor que o caractere de B
-            }else if((int) this.getChave().charAt(i) > (int)((Dado1) B).getChave().charAt(i)){
-                return 0;     //Retorna 1 se achou um caractere de A que é maior que o caractere de B
+        if(this.getChave().equals(dado.getChave()))     //Verifica se as duas string são iguais
+            return 0;       //retorna 0 se as strings são iguais
+        else {
+            int i = 0;
+            while (i < tamanhoString1 && i < tamanhoString2) {
+                if ((int) this.getChave().charAt(i) < (int) ((Dado1) B).getChave().charAt(i)) {
+                    return 1;    //Retorna 1 se achou um caractere de A que menor que o caractere de B
+                }else if((int) this.getChave().charAt(i) > (int) ((Dado1) B).getChave().charAt(i)){
+                    return -1;     //Retorna -1 se achou um caractere de A que é maior que o caractere de B
+                }
+                i++;
+            }
+            if(i<tamanhoString2) {
+                return -1; //Todos os caracteres são iguais mas a string A é menor que a string B
+            }else {
+                System.out.println(i+">"+tamanhoString1);
+                return 1;  //Todos os caracteres são iguais mas a string A é maior que a string B
             }
         }
     }
