@@ -1,27 +1,27 @@
 package MergeSort;
 
+import javax.management.ObjectName;
 import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
 
 public class MergeSort {
 
-    public static void mergesort(int[] vetor, int inicio, int fim){
-
+    public static <T extends Comparable<T>> void mergesort(T[] vetor, int inicio, int fim){
         int meio;
         if(inicio<fim-1){
             meio = (inicio+fim)/2; // Calcula onde fica o meio do vetor
             mergesort(vetor,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
             mergesort(vetor,meio,fim);// Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
             merge(vetor,inicio,meio,fim);
-
         }
     }
+
     //Função merge padrão. Não exclui elementos iguais
-    public static void merge(int[] vetor, int inicio, int meio, int fim) {
+    public static <T extends  Comparable<T>>void merge(T[] vetor, int inicio, int meio, int fim) {
         //Cria um vetor temporario para trabalharmos a ordenação.
         //O vetor temporario tem o mesmo tamanho do vetor orginal sendo uma copia do mesmo ordenado.
 
-        int vetorTemporario[] = new int[fim - inicio];
+        T[] vetorTemporario = (T[]) new Comparable[vetor.length];
 
         //O cont1 é o contador que irá percorrer o primeiro subvetor, que está dentro do vetorTemporario.Sendo do inicio até o meio.
         //O cont2 é o contador que irá percorrer o segundo subvetor, que está dentro do vetorTemporario. Sendo do meio+1 até o fim.
@@ -33,8 +33,8 @@ public class MergeSort {
         //e cont2 não chegar no fim do segundo subVetor que como estamos fazendo tudo dentro do vetorTemporario
         //corresponde ao fim do vetor.
         while (cont1 < meio && cont2 < fim) {
-            if(vetor[cont1]<=vetor[cont2]){
-             //   System.out.println("vetor["+cont1+"]="+vetor[cont1]+"<="+"vetor["+cont2+"]="+vetor[cont2]);
+            //vetor[cont1]<=vetor[cont2]
+            if(vetor[cont1].compareTo(vetor[cont2])==-1 || vetor[cont1].compareTo(vetor[cont2])==0 ){
                 vetorTemporario[i] = vetor[cont1]; //O vetorTemporario recebe o valor da posição cont1 pois é a menor
                 i++; //Incrementamos o contador de posição do vetorTemporario.
                 cont1++; //Incrementamos o contador de posição do primeiro subvetor já que o valor foi adicionado ao vetorTemporario.
