@@ -1,6 +1,6 @@
 package Dados;
 
-public class Dado3 implements Comparable{
+public class Dado3 implements Comparable<Dado3>{
     private int chave;
     private int[] valor;
 
@@ -26,7 +26,7 @@ public class Dado3 implements Comparable{
     }
 
     @Override
-    public int compareTo(Object B) {                            //Se for A<B, sendo A o dado que chamou o método
+    public int compareTo(Dado3 B) {                            //Se for A<B, sendo A o dado que chamou o método
         Dado3 dado = (Dado3) B;
         if(this.getChave()<dado.getChave())                     //Retorna -1 para A<B
             return -1;

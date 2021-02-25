@@ -1,6 +1,6 @@
 package Dados;
 
-public class Dado2 implements Comparable{
+public class Dado2 implements Comparable<Dado2>{
     private double chave;
     private String valor;
 
@@ -26,13 +26,16 @@ public class Dado2 implements Comparable{
     }
 
     @Override
-    public int compareTo(Object B) {                            //Se for A<B, sendo A o dado que chamou o método
-        Dado2 dado = (Dado2) B;
-        if(this.getChave()<dado.getChave())                     //Retorna -1 para A<B
+    public int compareTo(Dado2 B) {                            //Se for A<B, sendo A o dado que chamou o método
+        Dado2 dado =  B;
+        if(this.getChave() < dado.getChave())                     //Retorna -1 para A<B
             return -1;
-        else if (this.getChave()==((Dado2) B).getChave())       //Retorna 0 para A==B
+        else if (this.getChave()==B.getChave())       //Retorna 0 para A==B
             return 0;
         else
             return 1;                                           //Retorna 1 para A>B
     }
-}
+
+
+    }
+
