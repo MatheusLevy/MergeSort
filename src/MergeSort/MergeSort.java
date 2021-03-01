@@ -1,5 +1,7 @@
 package MergeSort;
 
+import InsertSort.InsertSort;
+
 import javax.management.ObjectName;
 import javax.sound.midi.SysexMessage;
 import java.util.ArrayList;
@@ -7,12 +9,17 @@ import java.util.ArrayList;
 public class MergeSort {
 
     public static <T extends Comparable<T>> void mergesort(T[] vetor, int inicio, int fim){
-        int meio;
-        if(inicio<fim-1){
-            meio = (inicio+fim)/2; // Calcula onde fica o meio do vetor
-            mergesort(vetor,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
-            mergesort(vetor,meio,fim);// Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
-            merge(vetor,inicio,meio,fim);
+        int tamnanho = fim - inicio;
+        if(tamnanho<=15){
+            InsertSort.insertSort(vetor,inicio,fim);
+        }else{
+            int meio;
+            if(inicio<fim-1){
+                meio = (inicio+fim)/2; // Calcula onde fica o meio do vetor
+                mergesort(vetor,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
+                mergesort(vetor,meio,fim);// Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
+                merge(vetor,inicio,meio,fim);
+            }
         }
     }
 

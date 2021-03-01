@@ -43,11 +43,9 @@ public class Main {
         arr[1] = d2;
         arr[2] = d4;
         arr[3] = d3;
-
+        */
        MergeSort.mergesort(arr,0,arr.length);
-       */
 
-       InsertSort.insertSort(arr,arr.length);
 
        for (int i=0;i<arr.length;i++)
             System.out.println("Vetor["+i+"]= " +arr[i].getChave());

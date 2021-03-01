@@ -2,9 +2,10 @@ package InsertSort;
 
 public class InsertSort {
 
-    public static  <T extends Comparable<T>> void insertSort(T[] vetor, int tamanho){
+    public static  <T extends Comparable<T>> void insertSort(T[] vetor, int inicio,int fim){
         T chave;  //A chave que será comparada com os elementos anteriores do vetor
         int j;
+        int tamanho = fim-inicio;
         for(int i=1;i<tamanho;i++){
             chave = vetor[i]; //Começando na segunda posição do vetor a chave
                                 //vetor[j]>chave
