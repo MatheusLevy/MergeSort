@@ -28,7 +28,7 @@ public class Dado1 implements Comparable<Dado1>{
 
 
     /* Retorno:
-        -1 : A>B
+        -1 : A<B
          0 : A==B
          1 : A>B
     */

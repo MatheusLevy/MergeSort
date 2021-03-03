@@ -16,8 +16,11 @@ public class MergeSort {
             int meio;
             if(inicio<fim-1){
                 meio = (inicio+fim)/2; // Calcula onde fica o meio do vetor
-                mergesort(vetor,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
-                mergesort(vetor,meio,fim);// Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
+                if(vetor[meio].compareTo(vetor[meio+1]) > 0){
+                    mergesort(vetor,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
+                    mergesort(vetor,meio,fim);              // Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
+
+                }
                 merge(vetor,inicio,meio,fim);
             }
         }
