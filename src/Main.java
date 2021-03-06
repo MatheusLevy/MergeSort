@@ -2,17 +2,18 @@
 
 import MergeSort.MergeSort;
 import Dados.*;
-import InsertSort.InsertSort;
 import java.lang.Comparable;
-
+import MergeSort.MergeSortPadrão;
+import MergeSort.MergeInsertSort;
+import MergeSort.MergeSortTestaOrdem;
 public class Main {
     public static <T extends Comparable<T>> void main(String[] args){
 
 
-        Dado1 d1 = new Dado1("AAA",123);
-        Dado1 d2 = new Dado1("BBB",123);
-        Dado1 d3 = new Dado1("AAAA",123);
-        Dado1 d4 = new Dado1("CC",123);
+        Dado1 d1 = new Dado1("A",123);
+        Dado1 d2 = new Dado1("B",123);
+        Dado1 d3 = new Dado1("AA",123);
+        Dado1 d4 = new Dado1("C",123);
 
         Dado1[] arr = new Dado1[4];
         arr[0]=d2;          // BBB AAA CCC AAAA
@@ -44,12 +45,11 @@ public class Main {
         arr[2] = d4;
         arr[3] = d3;
         */
-       MergeSort.mergesort(arr,0,arr.length);
 
+        MergeSort.sort(arr);
 
        for (int i=0;i<arr.length;i++)
             System.out.println("Vetor["+i+"]= " +arr[i].getChave());
-
     }
 
 }
