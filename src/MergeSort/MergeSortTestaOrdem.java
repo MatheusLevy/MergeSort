@@ -3,23 +3,27 @@ package MergeSort;
 import InsertSort.InsertSort;
 
 public class MergeSortTestaOrdem {
-    public static <T extends Comparable<T>> void sortInsertTesta(T[] vetor){
-        mergeInsertSortTestta(vetor,0,vetor.length);
+    public static <T extends Comparable<T>> void sortInsertTestaOrdem(T[] vetor){
+        T[] auxiliar = vetor.clone();
+        mergeInsertSortTesta(vetor,auxiliar,0,vetor.length);
     }
 
-    public static <T extends Comparable<T>>  void mergeInsertSortTestta(T[] vetor, int inicio, int fim){
+    public static <T extends Comparable<T>>  void mergeInsertSortTesta(T[] vetor,T[] auxiliar, int inicio, int fim){
         int tamanho = fim - inicio;
-        if(tamanho<=0){
+        if(tamanho<=15){
             InsertSort.insertSort(vetor,inicio,fim);
         }else{
             int meio;
             if(inicio<fim-1){
                 meio = (inicio+fim)/2;                             // Calcula onde fica o meio do vetor
-                if(vetor[meio-1].compareTo(vetor[meio])<=0){
-                    mergeInsertSortTestta(vetor,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
-                    mergeInsertSortTestta(vetor,meio,fim);               // Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
+
+                mergeInsertSortTesta(vetor,auxiliar,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
+                mergeInsertSortTesta(vetor,auxiliar,meio,fim);               // Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
+                if(vetor[meio].compareTo(vetor[meio-1])>=0){
+                    System.arraycopy(vetor,inicio,auxiliar,inicio,tamanho);
+                }else {
+                    mergeInsertTesta(vetor, inicio, meio, fim);
                 }
-                mergeInsertTesta(vetor,inicio,meio,fim);
             }
         }
     }

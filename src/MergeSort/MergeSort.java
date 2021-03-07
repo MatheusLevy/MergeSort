@@ -22,12 +22,11 @@ public class MergeSort {
         }else{
             int meio;
             if(inicio<fim-1){
-                meio = (inicio+fim)/2;                               // Calcula onde fica o meio do vetor
+                meio = (inicio+fim)/2;                             // Calcula onde fica o meio do vetor
                 mergesort(auxiliar, vetor, inicio, meio);            // Chamada recursiva do inicio do vetor até a metade
                 mergesort(auxiliar, vetor, meio, fim);               // Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
-
                 if(vetor[meio].compareTo(vetor[meio-1])>=0){ //Verifica se o vetor já está ordenado. Caso esteja ele vai copiar do vetor
-                                                            // para o axiliar em vez de chamar o merge. Caso não esteja ordenado ele vai
+                               // para o axiliar em vez de chamar o merge. Caso não esteja ordenado ele vai
                                                             //mandar pro merge e ordenar.
                     //arraycopy é uma operação de custo menor do que iterar usando um for de inicio até fim-1
                     System.arraycopy(vetor,inicio,auxiliar,inicio,tamanho);
@@ -44,6 +43,7 @@ public class MergeSort {
        int cont2=meio;   //Contador do segundo subvetor
 
        for(int k=inicio;k<fim;k++){                 //Percorrendo do inicio ao fim do vetor
+
            if(cont1>meio-1){                        //Caso o o cont1 tenha chegado no fim do subvetor1, mas o cont2 não, colocamos os elementos do 2subvetor no vetor.
                auxiliar[k]= vetor[cont2++];
            }
