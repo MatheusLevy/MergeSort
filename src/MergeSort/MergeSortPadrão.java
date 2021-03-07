@@ -1,15 +1,17 @@
 package MergeSort;
 
 public class MergeSortPadrão {
-
-    public static <T extends Comparable<T>> void mergesortPadrão(T[] vetor, int inicio, int fim) {
+    static int op=0;
+    public static <T extends Comparable<T>> int mergesortPadrão(T[] vetor, int inicio, int fim) {
         int meio;
         if (inicio < fim - 1) {
+            op++;
             meio = (inicio + fim) / 2;                      // Calcula onde fica o meio do vetor
             mergesortPadrão(vetor, inicio, meio);              // Chamada recursiva do inicio do vetor até a metade
             mergesortPadrão(vetor, meio, fim);                // Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
             mergePadrão(vetor, inicio, meio, fim);
         }
+        return op;
     }
 
     public static <T extends Comparable<T>> void mergePadrão(T[] vetor, int inicio, int meio, int fim) {
@@ -32,12 +34,13 @@ public class MergeSortPadrão {
             if (vetor[cont1].compareTo(vetor[cont2]) <= 0) {
                 vetorTemporario[i] = vetor[cont1];   //O vetorTemporario recebe o valor da posição cont1 pois é a menor
                 i++;                                //Incrementamos o contador de posição do vetorTemporario.
-                cont1++;                           //Incrementamos o contador de posição do primeiro subvetor já que o valor foi adicionado ao vetorTemporario.
+                cont1++;
+                op++;//Incrementamos o contador de posição do primeiro subvetor já que o valor foi adicionado ao vetorTemporario.
             } else {
                 //O mesmo do acima
                 vetorTemporario[i] = vetor[cont2];
                 i++;
-                cont2++;                        //Incrementamso o contador de posição do segundo subvetor
+                cont2++;op++;                        //Incrementamso o contador de posição do segundo subvetor
             }
         }
 
@@ -47,6 +50,7 @@ public class MergeSortPadrão {
             vetorTemporario[i] = vetor[cont1];
             i++;
             cont1++;
+            op++;
         }
         //Colocando os valores que sobraram no segundo subarray
         //cont2<fim é o mesmo que dizer que existem elementos entre meio+1 e fim que sobraram
@@ -54,6 +58,7 @@ public class MergeSortPadrão {
             vetorTemporario[i] = vetor[cont2];
             i++;
             cont2++;
+            op++;
         }
 
         //Vamos transferir os valores do vetorTemporario para o vetor original
@@ -63,7 +68,7 @@ public class MergeSortPadrão {
         int k;
         for (j = 0, k = inicio; k < fim; j++, k++) {
             vetor[k] = vetorTemporario[j];
-
+            op++;
         }
     }
 }
