@@ -2,16 +2,21 @@ package InsertSort;
 
 public class InsertSort {
 
-    public static  <T extends Comparable<T>> void insertSort(T[] vetor, int tamanho){
-        T chave;  //A chave que será comparada com os elementos anteriores do vetor
-        int j;
-        for(int i=1;i<tamanho;i++){
-            chave = vetor[i]; //Começando na segunda posição do vetor a chave
-                                //vetor[j]>chave
-            for(j=i-1;(j>=0) && (vetor[j].compareTo(chave)==1);j--){          //Percorrendo da posição antrior a chave até o inicio do vetor
-                vetor[j+1]=vetor[j];                                          // ou até achar um elemento maior pra ser trocado.
-            }                                                                 //Enquanto as posições anteriores forem maiores vai copiando por cima da posição da chave
-            vetor[j+1]= chave;                                                // Quando sair do loop coloca a chave no lugar e ai vai organizar
-        }
+    public static  <T extends Comparable<T>> int insertSort(T[] vetor, int inicio,int fim,int op){
+
+       for(int i=inicio;i<fim;i++) {
+           for (int j = i; j > inicio && vetor[j].compareTo(vetor[j - 1]) < 0; j--) {
+               troca(vetor, j, j - 1);op++;
+           }
+       }
+
+       return op;
+}
+
+    //Função auxiliar pra fazer a troca dos elementos
+    private static <T extends Comparable<T>> void troca(T[] vetor,int i, int j){
+        T aux = vetor[i];
+        vetor[i] = vetor[j];
+        vetor[j] = aux;
     }
 }
