@@ -48,10 +48,8 @@ public class Dado1 implements Comparable<Dado1>{
             int i = 0;
             while (i < tamanhoString1 && i < tamanhoString2) {
                 if ((int) this.getChave().charAt(i) < (int) ((Dado1) B).getChave().charAt(i)) {
-                    //System.out.println(this.getChave().charAt(i)+"["+(int) this.getChave().charAt(i)+"]<"+((Dado1) B).getChave().charAt(i)+"["+(int) ((Dado1) B).getChave().charAt(i)+"] return: 1");
                     return -1;    //Retorna 1 se achou um caractere de A que menor que o caractere de B
                 }else if((int) this.getChave().charAt(i) > (int) ((Dado1) B).getChave().charAt(i)){
-                    //System.out.println(this.getChave().charAt(i)+"["+(int) this.getChave().charAt(i)+">"+((Dado1) B).getChave().charAt(i)+"["+(int) ((Dado1) B).getChave().charAt(i)+"] return: -1");
                     return 1;     //Retorna -1 se achou um caractere de A que é maior que o caractere de B
                 }
                 i++;

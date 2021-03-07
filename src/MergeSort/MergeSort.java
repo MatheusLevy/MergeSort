@@ -17,18 +17,24 @@ public class MergeSort {
 
     public static <T extends Comparable<T>>  void mergesort(T[] vetor,T[] auxiliar, int inicio, int fim){
         int tamanho = fim - inicio;
-        if(tamanho<=0){
+        if(tamanho<=15){
             InsertSort.insertSort(auxiliar,inicio,fim);
         }else{
             int meio;
             if(inicio<fim-1){
-                meio = (inicio+fim)/2;               // Calcula onde fica o meio do vetor
-                if(auxiliar[meio-1].compareTo(auxiliar[meio])<=0){
-                    mergesort(auxiliar,vetor,inicio,meio);            // Chamada recursiva do inicio do vetor até a metade
-                    mergesort(auxiliar,vetor,meio,fim);               // Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
+                meio = (inicio+fim)/2;                               // Calcula onde fica o meio do vetor
+                mergesort(auxiliar, vetor, inicio, meio);            // Chamada recursiva do inicio do vetor até a metade
+                mergesort(auxiliar, vetor, meio, fim);               // Chamada recursiva da 2ª parte do vetor (meio+1) até o fim
+
+                if(vetor[meio].compareTo(vetor[meio-1])>=0){ //Verifica se o vetor já está ordenado. Caso esteja ele vai copiar do vetor
+                                                            // para o axiliar em vez de chamar o merge. Caso não esteja ordenado ele vai
+                                                            //mandar pro merge e ordenar.
+                    //arraycopy é uma operação de custo menor do que iterar usando um for de inicio até fim-1
+                    System.arraycopy(vetor,inicio,auxiliar,inicio,tamanho);
+                }else{
+                    merge(vetor,auxiliar,inicio,meio,fim);
                 }
 
-                merge(vetor,auxiliar,inicio,meio,fim);
             }
         }
     }

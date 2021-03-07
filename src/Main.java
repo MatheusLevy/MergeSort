@@ -1,25 +1,31 @@
 // Classe Executavel do Programa
 
+import InsertSort.InsertSort;
 import MergeSort.MergeSort;
 import Dados.*;
 import java.lang.Comparable;
 import MergeSort.MergeSortPadrão;
 import MergeSort.MergeInsertSort;
 import MergeSort.MergeSortTestaOrdem;
+import Leitura.Leitor;
+
 public class Main {
     public static <T extends Comparable<T>> void main(String[] args){
 
+/*
+        Dado1 d1 = new Dado1("AAB",123);
+        Dado1 d2 = new Dado1("ABB",123);
+        Dado1 d3 = new Dado1("ACC",123);
+        Dado1 d4 = new Dado1("ADD",123);
 
-        Dado1 d1 = new Dado1("A",123);
-        Dado1 d2 = new Dado1("B",123);
-        Dado1 d3 = new Dado1("AA",123);
-        Dado1 d4 = new Dado1("C",123);
-
-        Dado1[] arr = new Dado1[4];
+*/
+        Dado1[] arr ;
+/*
         arr[0]=d2;          // BBB AAA CCC AAAA
         arr[1]=d1;
         arr[2]=d4;
         arr[3]=d3;
+*/
         /*
        Dado2 d1 = new Dado2(12.3,"a");
        Dado2 d2 = new Dado2(6.0,"a");
@@ -46,10 +52,16 @@ public class Main {
         arr[3] = d3;
         */
 
-        MergeSort.sort(arr);
+        //
 
-       for (int i=0;i<arr.length;i++)
+      /* for (int i=0;i<arr.length;i++)
             System.out.println("Vetor["+i+"]= " +arr[i].getChave());
+      */
+
+    arr = Leitor.leitor1(1000);
+    MergeSort.sort(arr);
+    for(int i=0;i<arr.length;i++)
+        System.out.println("Vetor["+i+"]= " +arr[i].getChave());
     }
 
 }
